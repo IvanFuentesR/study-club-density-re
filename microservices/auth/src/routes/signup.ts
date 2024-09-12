@@ -44,7 +44,7 @@ router.post(
 
     // COURSE 2
 
-    console.log('JWT Secret: ', process.env.JWT_KEY);
+    //console.log('JWT Secret: ', process.env.JWT_KEY);
 
     // Store it on session object
     req.session = {
