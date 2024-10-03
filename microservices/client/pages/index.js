@@ -4,7 +4,9 @@ import { buildClient, buildClientV2 } from '../api/build-client';
 const LandingPage = ({ currentUser }) => {
   console.log(currentUser);
 
-  return <h1>Landing Page</h1>;
+  // return <h1>Landing Page</h1>;
+
+  return currentUser ? <h1>You are signed in</h1> : <h1>You are NOT signed in</h1>;
 };
 
 // LandingPage.getInitialProps = async () => {
@@ -30,20 +32,20 @@ const LandingPage = ({ currentUser }) => {
 //   }
 // };
 
-// LandingPage.getInitialProps = async (context) => {
-//   const client = buildClient(context);
-
-//   const { data } = await client.get('/api/users/currentuser');
-
-//   return data;
-// };
-
-export const getServerSideProps = async (context) => {
-  const client = buildClientV2(context);
+LandingPage.getInitialProps = async (context) => {
+  const client = buildClient(context);
 
   const { data } = await client.get('/api/users/currentuser');
 
-  return { props: data };
+  return data;
 };
+
+// export const getServerSideProps = async (context) => {
+//   const client = buildClientV2(context);
+
+//   const { data } = await client.get('/api/users/currentuser');
+
+//   return { props: data };
+// };
 
 export default LandingPage;
